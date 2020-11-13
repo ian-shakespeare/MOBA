@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 42609234}
   - component: {fileID: 42609233}
   - component: {fileID: 42609236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 97988925}
   - component: {fileID: 97988924}
   - component: {fileID: 97988923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health Bar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 134278008}
   - component: {fileID: 134278007}
   - component: {fileID: 134278006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 605740853}
   - component: {fileID: 605740852}
   - component: {fileID: 605740855}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 2115397862}
   - component: {fileID: 2115397861}
   - component: {fileID: 2115397863}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

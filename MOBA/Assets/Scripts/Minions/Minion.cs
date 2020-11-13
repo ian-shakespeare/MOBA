@@ -22,11 +22,6 @@ public class Minion : MonoBehaviour {
     //Debug.Log("Moving");
     transform.Translate ( Vector3.forward * MoveSpeed * Time.deltaTime );
   }
-  void OnTriggerEnter( Collider other ) {
-    if ( other.gameObject == GameObject.Find("Projectile") ) {
-      Debug.Log("Projectile Collision");
-    }
-  }
   GameObject enemyInRange() {
     Collider[] hitColliders = Physics.OverlapSphere( transform.position, 1.7f );
     foreach ( var hitCollider in hitColliders ) {
