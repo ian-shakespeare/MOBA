@@ -155,7 +155,9 @@ MonoBehaviour:
   MoveSpeed: 10
   PlayerObject: {fileID: 134278005}
   camera: {fileID: 605740851}
+  isAlive: 0
   isFriendly: 0
+  playerHealth: {fileID: 42609236}
 --- !u!54 &42609234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -313,6 +315,7 @@ GameObject:
   - component: {fileID: 134278008}
   - component: {fileID: 134278007}
   - component: {fileID: 134278006}
+  - component: {fileID: 134278010}
   m_Layer: 8
   m_Name: Player
   m_TagString: Entity
@@ -394,6 +397,24 @@ Transform:
   m_Father: {fileID: 42609235}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &134278010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134278005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba384ceeba85e346ab6723e0bf2c1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 0
+  PlayerObject: {fileID: 0}
+  camera: {fileID: 0}
+  isAlive: 0
+  isFriendly: 0
+  playerHealth: {fileID: 0}
 --- !u!1 &436286616
 GameObject:
   m_ObjectHideFlags: 0
