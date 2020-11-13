@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
   public float MoveSpeed;
   public GameObject PlayerObject;
   public GameObject camera;
+  public bool isFriendly;
 
   // Update is called once per frame
   void Update() {
@@ -35,5 +36,9 @@ public class Player : MonoBehaviour
     if ( Input.GetKey( KeyCode.D ) ) {
       transform.Translate( Vector3.right * MoveSpeed * Time.deltaTime );
     }
+  }
+
+  bool HasAttackedPlayer() {
+     return true;
   }
 }
