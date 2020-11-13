@@ -10,11 +10,12 @@ public class Player : MonoBehaviour
     public bool isAlive;
     public bool isFriendly;
     public Health playerHealth;
+    public bool HasAttackedPlayer;
 
     // Update is called once per frame
     void Update()
     {
-        isAlive = true; 
+        isAlive = true;
         // Player facing direction
         Plane player_plane = new Plane(Vector3.up, transform.position);
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -57,9 +58,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    bool HasAttackedPlayer()
+    bool getHasAttackedPlayer()
     {
-        return true;
+        return HasAttackedPlayer;
+    }
+    public bool getIsFriendly() {
+      return isFriendly;
     }
 }
     /*
