@@ -22,25 +22,29 @@ public class Tower : MonoBehaviour {
 
     // Attack code
     void attack( GameObject enemy ) {
-      if ( enemy.GetComponent<Player>() != null ) {
-        Player player = enemy.gameObject.GetComponent<Player>();
-        player.playerHealth.ModifyHealth( TowerDamage );
-      }
-      else if ( enemy.GetComponent<Minion>() != null ) {
+      if ( enemy.GetComponent<Minion>() != null ) {
         Minion minion = enemy.gameObject.GetComponent<Minion>();
         minion.MinionHealth.ModifyHealth( TowerDamage );
+      }
+      else if ( enemy.GetComponent<Player>() != null ) {
+        Player player = enemy.gameObject.GetComponent<Player>();
+        player.playerHealth.ModifyHealth( TowerDamage );
       }
     }
 
     // Checks for enemies in range, functions the same as in Minion.cs
     GameObject enemyInRange() {
+      GameObject smallest = null;
       Collider[] hitColliders = Physics.OverlapSphere( transform.position, AttackRange );
       foreach ( var hitCollider in hitColliders ) {
         if ( hitCollider.tag == "Entity" && hitCollider.gameObject != this.gameObject && getOtherFriendly( hitCollider.gameObject ) != getIsFriendly() ) {
-          return hitCollider.gameObject;
+          if( smallest == null || Vector3.Distance(hitCollider.gameObject.transform.position, transform.position) < Vector3.Distance(smallest.gameObject.transform.position, transform.position) ||
+          ( smallest.gameObject.GetComponent<Player>() != null && hitCollider.gameObject.GetComponent<Minion>() != null ) ) {
+            smallest = hitCollider.gameObject;
+          }
         }
       }
-      return null;
+      return smallest;
     }
 
     // Checks the friendly value of entity

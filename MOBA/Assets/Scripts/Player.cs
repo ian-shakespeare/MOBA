@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public Exp playerExp;
     public bool HasAttackedPlayer;
 
+    void Start() {
+      // GetComponent<Rigidbody>().maxDepenetrationVelocity = 10f;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
             transform.position = specPosition;
 
         }
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 
     bool getHasAttackedPlayer() {
