@@ -36,7 +36,6 @@ public class Exp : MonoBehaviour
             curExp = 0;
         }
 
-
         float curExpPct = (float)curExp / (float)expMax;
         OnExpPctChanged(curExpPct);
     }
