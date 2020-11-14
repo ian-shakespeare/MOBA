@@ -41,12 +41,4 @@ public class Health : MonoBehaviour
         float currentHealthPct = (float)currentHealth / (float)maxHealth;
         OnHealthPctChanged(currentHealthPct);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            ModifyHealth(-10);
-    }
-
-
 }

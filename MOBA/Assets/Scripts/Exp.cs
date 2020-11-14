@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Exp : MonoBehaviour
 {
-    private int maxLevel = 10;
+    private int maxLevel = 5;
 
     [SerializeField]
 
@@ -17,7 +17,7 @@ public class Exp : MonoBehaviour
 
     public event Action<float> OnExpPctChanged = delegate { };
 
-    private void OnEnable() 
+    private void OnEnable()
     {
         curExp = 0;
     }
@@ -27,7 +27,12 @@ public class Exp : MonoBehaviour
         return curExp;
     }
 
-    public void ModifyExp(int amount) 
+    public int GetLevel()
+    {
+        return curLevel;
+    }
+
+    public void ModifyExp(int amount)
     {
         curExp += amount;
 
@@ -40,11 +45,14 @@ public class Exp : MonoBehaviour
         OnExpPctChanged(curExpPct);
     }
 
-    private void Update() 
+    private void Update()
     {
+        if ( Time.time % 10f <= 0.005 ) {
+          ModifyExp(10);
+        }
         if (Input.GetKeyDown(KeyCode.F))
             ModifyExp(10);
-        
+
     }
 
 

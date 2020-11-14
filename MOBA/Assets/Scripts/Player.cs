@@ -14,10 +14,19 @@ public class Player : MonoBehaviour
   public bool HasAttackedPlayer;
   public float Timer = 0f;
   public float AttackSpeed;
+  public float AbilityQCD;
   public HeroKit kit;
+  private int damageModifier;
+  public AudioManager audio;
+  private bool doesSound;
 
   void Start() {
     // GetComponent<Rigidbody>().maxDepenetrationVelocity = 10f;
+
+    doesSound = true;
+    damageModifier = 1;
+    audio = GameObject.Find("PlayerAudio").GetComponent<AudioManager>();
+    audio.Play("Music");
   }
   // Update is called once per frame
   void Update()
@@ -57,9 +66,21 @@ public class Player : MonoBehaviour
       {
           kit.BasicAttack();
       }
+      if (Input.GetKey(KeyCode.Q))
+      {
+          kit.AbilityQ();
+      }
+      if (Input.GetKey(KeyCode.E))
+      {
+          // E SOUND FILE HERE
+      }
 
       if (playerHealth.GetHealth() < 0)
       {
+        if (doesSound) {
+          audio.Play("Death");
+          doesSound = false;
+        }
           PlayerObject.GetComponent<Renderer>().enabled = false;
           // Spectate Vector
           Vector3 specPosition = new Vector3(0, 20, -45);
@@ -102,6 +123,9 @@ public class Player : MonoBehaviour
   }
   public float getAttackSpeed() {
     return AttackSpeed;
+  }
+  public float getAbilityQCD() {
+    return AbilityQCD;
   }
 }
     /*

@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.0087890625}
+  m_Size: {x: 0.75, y: 0.75, z: 1.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4177896163397963471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a504bd6ccf9354fa89d02010bc97aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 30
-  MaxDistance: 1
-  ProjectileDamage: -30
+  ProjectileSpeed: 25
+  MaxDistance: 4.5
+  ProjectileDamage: -10
   PlayerObject: {fileID: 6662049786412864457, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
     type: 3}
 --- !u!54 &-6096872885495619299
@@ -139,7 +139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 448bf35d671c1bd49a750926e415becc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

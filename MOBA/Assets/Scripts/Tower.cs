@@ -8,10 +8,17 @@ public class Tower : MonoBehaviour {
     public Health TowerHealth;
     public int TowerDamage;
     public double AttackSpeed;
+    public AudioManager audio;
+
+    void Start()
+    {
+      audio = GameObject.Find("TowerAudio").GetComponent<AudioManager>();
+    }
 
     // Checks to see if enemy is in range, attacks accordingly
     void Update() {
       if ( TowerHealth.GetHealth() <= 0 ) {
+        audio.Play("Destroy");
         Destroy( this.gameObject );
       }
       GameObject Enemy = enemyInRange();
@@ -25,10 +32,12 @@ public class Tower : MonoBehaviour {
       if ( enemy.GetComponent<Minion>() != null ) {
         Minion minion = enemy.gameObject.GetComponent<Minion>();
         minion.MinionHealth.ModifyHealth( TowerDamage );
+        audio.Play("Hit");
       }
       else if ( enemy.GetComponent<Player>() != null ) {
         Player player = enemy.gameObject.GetComponent<Player>();
         player.playerHealth.ModifyHealth( TowerDamage );
+        audio.Play("Hit");
       }
     }
 

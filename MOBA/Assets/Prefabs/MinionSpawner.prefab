@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32741050f280d8840984a01c52537ab9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   minion: {fileID: 6126843980249157893, guid: 23114af4706fb0441967aa3b0dffcbff, type: 3}
-  SpawnRate: 25
+  SpawnRate: 30

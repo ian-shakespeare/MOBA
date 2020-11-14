@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
       }
   }
   public int getProjectileDamage() {
-    return ProjectileDamage;
+    return ProjectileDamage * PlayerObject.GetComponent<Player>().playerExp.GetLevel();
   }
   public bool getIsFriendly() {
     return PlayerObject.GetComponent<Player>().getIsFriendly();

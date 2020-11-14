@@ -9,12 +9,24 @@ public class Minion : MonoBehaviour {
   public Health MinionHealth;
   public int MinionDamage;
   public double AttackSpeed;
+  private float rootTime;
+  private float internalMoveSpeed;
+  public AudioManager audio;
+
+  void Start() {
+    internalMoveSpeed = MoveSpeed;
+    audio = GameObject.Find("MinionAudio").GetComponent<AudioManager>();
+  }
 
   void Update() {
     //Debug.Log("HELLO");
     // Checks to see if enemy is in range, then attacks or moves accordingly
     if ( MinionHealth.GetHealth() <= 0 ) {
+      Destroy(GameObject.Find("MinionAudio"));
       Destroy(this.gameObject);
+    }
+    if ( Time.time - rootTime >= 5f ) {
+      MoveSpeed = internalMoveSpeed;
     }
     GameObject Enemy = enemyInRange();
     if ( Enemy != null ) {
@@ -34,12 +46,22 @@ public class Minion : MonoBehaviour {
     if ( enemy.GetComponent<Player>() != null ) {
       Player player = enemy.gameObject.GetComponent<Player>();
       player.playerHealth.ModifyHealth( MinionDamage );
+      this.audio.Play("Hit2");
+      player.audio.Play("TakeDamage");
     }
     else if ( enemy.GetComponent<Minion>() != null ) {
       Minion minion = enemy.gameObject.GetComponent<Minion>();
       minion.MinionHealth.ModifyHealth( MinionDamage );
-    } else {
-      enemy.gameObject.GetComponent<Tower>().TowerHealth.ModifyHealth( MinionDamage );
+      this.audio.Play("Hit1");
+    }
+    else if ( enemy.GetComponent<Tower>() != null ) {
+      Tower tower = enemy.gameObject.GetComponent<Tower>();
+      tower.TowerHealth.ModifyHealth( MinionDamage );
+      this.audio.Play("Hit1");
+    }
+    else {
+      enemy.gameObject.GetComponent<Core>().CoreHealth.ModifyHealth( MinionDamage );
+      this.audio.Play("Hit1");
     }
   }
   void move() {
@@ -77,13 +99,22 @@ public class Minion : MonoBehaviour {
       Minion minion = entity.gameObject.GetComponent<Minion>();
       return minion.getIsFriendly();
     }
-    else {
+    else if ( entity.GetComponent<Tower>() != null ) {
       return entity.gameObject.GetComponent<Tower>().getIsFriendly();
+    }
+    else {
+      return entity.gameObject.GetComponent<Core>().getIsFriendly();
     }
   }
   void OnTriggerEnter( Collider other ) {
     if ( other.gameObject.GetComponent<Projectile>() != null && other.gameObject.GetComponent<Projectile>().getIsFriendly() != this.getIsFriendly() ) {
       this.MinionHealth.ModifyHealth( other.gameObject.GetComponent<Projectile>().getProjectileDamage() );
+      Destroy( other.gameObject );
+    }
+    if ( other.gameObject.GetComponent<Trap>() != null && other.gameObject.GetComponent<Trap>().getIsFriendly() != this.getIsFriendly() ) {
+      this.MinionHealth.ModifyHealth( other.gameObject.GetComponent<Trap>().getTrapDamage() );
+      this.MoveSpeed = 0;
+      rootTime = Time.time;
       Destroy( other.gameObject );
     }
   }
