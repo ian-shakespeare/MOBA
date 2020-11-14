@@ -22,9 +22,21 @@ public class Health : MonoBehaviour
         return currentHealth;
     }
 
-    public void ModifyHealth(int amount) 
+    public int GetMaxHealth()
     {
-        currentHealth += amount;
+        return maxHealth;
+    }
+
+    public void ModifyHealth(int amount)
+    {
+        if (amount + currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
 
         float currentHealthPct = (float)currentHealth / (float)maxHealth;
         OnHealthPctChanged(currentHealthPct);

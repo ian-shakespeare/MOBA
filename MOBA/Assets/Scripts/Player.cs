@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public Health playerHealth;
     public Exp playerExp;
     public bool HasAttackedPlayer;
+    public float Timer = 0f;
 
     void Start() {
       // GetComponent<Rigidbody>().maxDepenetrationVelocity = 10f;
@@ -56,11 +57,35 @@ public class Player : MonoBehaviour
             PlayerObject.GetComponent<Renderer>().enabled = false;
             // Spectate Vector
             Vector3 specPosition = new Vector3(0, 20, -45);
-
             transform.position = specPosition;
+            // Prepares for respawn
+
+            Timer += Time.deltaTime;
+            if (Timer >= 5f)
+            {
+                // Apparent max number didn't quite check out, so I just used an arbitraily high number to do it instead and it would ultimately get set to the max anyways. Not a perfect system, but when will health be over 100,000?
+                playerHealth.ModifyHealth(100000);
+                Vector3 specPositionSpawn = new Vector3(0, 0, 0);
+                transform.position = specPositionSpawn;
+                PlayerObject.GetComponent<Renderer>().enabled = true;
+                Timer = 0f;
+            }
 
         }
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+        /*
+        if (playerHealth.GetHealth() < 0 && isAlive == true)
+        {
+            PlayerObject.GetComponent<Renderer>().enabled = false;
+            isAlive = false;
+            // Spectate Vector
+            Vector3 specPosition = new Vector3(0, 20, -45);
+            transform.position = specPosition;
+            // Prepares for respawn
+            DeathTimer();
+
+        }
+        */
     }
 
     bool getHasAttackedPlayer() {
