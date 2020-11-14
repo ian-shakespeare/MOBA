@@ -37,8 +37,7 @@ public class Minion : MonoBehaviour {
     else if ( enemy.GetComponent<Minion>() != null ) {
       Minion minion = enemy.gameObject.GetComponent<Minion>();
       minion.MinionHealth.ModifyHealth( MinionDamage );
-    }
-    else {
+    } else {
       enemy.gameObject.GetComponent<Tower>().TowerHealth.ModifyHealth( MinionDamage );
     }
   }

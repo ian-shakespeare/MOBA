@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         {
             PlayerObject.GetComponent<Renderer>().enabled = false;
             // Spectate Vector
-            Vector3 specPosition = new Vector3(0, 6, -10);
+            Vector3 specPosition = new Vector3(0, 20, -45);
 
             transform.position = specPosition;
 
