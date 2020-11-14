@@ -314,10 +314,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3020701012230225236, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020701012230225236, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6662049786412864457, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
         type: 3}
       propertyPath: m_Name
       value: PlayerHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662049786412864457, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Entity
       objectReference: {fileID: 0}
     - target: {fileID: 6662049786412864458, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
         type: 3}
@@ -373,6 +388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662049786521309932, guid: 1c2fb4efe5b22aa4da00c996689f07d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c2fb4efe5b22aa4da00c996689f07d2, type: 3}
@@ -515,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 959032597001885316, guid: 20f7aa560c4c26a4c9b65efd3409933e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 959032597001885327, guid: 20f7aa560c4c26a4c9b65efd3409933e,
         type: 3}

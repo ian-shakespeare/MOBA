@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
   public float ProjectileSpeed;
   public float MaxDistance;
+  public int ProjectileDamage;
+  public GameObject PlayerObject;
 
   void Update() {
       transform.Translate( Vector3.forward * Time.deltaTime * ProjectileSpeed );
@@ -14,5 +16,11 @@ public class Projectile : MonoBehaviour
       if ( MaxDistance >= 5 ) {
         Destroy( this.gameObject );
       }
+  }
+  public int getProjectileDamage() {
+    return ProjectileDamage;
+  }
+  public bool getIsFriendly() {
+    return PlayerObject.GetComponent<Player>().getIsFriendly();
   }
 }

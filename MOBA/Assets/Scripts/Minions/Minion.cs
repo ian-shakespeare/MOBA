@@ -11,6 +11,7 @@ public class Minion : MonoBehaviour {
   public double AttackSpeed;
 
   void Update() {
+    //Debug.Log("HELLO");
     // Checks to see if enemy is in range, then attacks or moves accordingly
     if ( MinionHealth.GetHealth() <= 0 ) {
       Destroy(this.gameObject);
@@ -78,6 +79,12 @@ public class Minion : MonoBehaviour {
     }
     else {
       return entity.gameObject.GetComponent<Tower>().getIsFriendly();
+    }
+  }
+  void OnTriggerEnter( Collider other ) {
+    if ( other.gameObject.GetComponent<Projectile>() != null && other.gameObject.GetComponent<Projectile>().getIsFriendly() != this.getIsFriendly() ) {
+      this.MinionHealth.ModifyHealth( other.gameObject.GetComponent<Projectile>().getProjectileDamage() );
+      Destroy( other.gameObject );
     }
   }
 }

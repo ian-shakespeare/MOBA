@@ -64,4 +64,10 @@ public class Tower : MonoBehaviour {
     public bool getIsFriendly() {
       return isFriendly;
     }
+    void OnTriggerEnter( Collider other ) {
+      if ( other.gameObject.GetComponent<Projectile>() != null && other.gameObject.GetComponent<Projectile>().getIsFriendly() != this.getIsFriendly() ) {
+        this.TowerHealth.ModifyHealth( other.gameObject.GetComponent<Projectile>().getProjectileDamage() );
+        Destroy( other.gameObject );
+      }
+    }
 }
