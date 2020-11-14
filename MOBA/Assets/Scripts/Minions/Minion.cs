@@ -5,6 +5,7 @@ using UnityEngine;
 public class Minion : MonoBehaviour {
   public float MoveSpeed;
   public bool isFriendly;
+  public float AttackRange;
 
   void Update() {
     GameObject Enemy = enemyInRange();
@@ -23,7 +24,7 @@ public class Minion : MonoBehaviour {
     transform.Translate ( Vector3.forward * MoveSpeed * Time.deltaTime );
   }
   GameObject enemyInRange() {
-    Collider[] hitColliders = Physics.OverlapSphere( transform.position, 1.7f );
+    Collider[] hitColliders = Physics.OverlapSphere( transform.position, AttackRange );
     foreach ( var hitCollider in hitColliders ) {
       if ( hitCollider.tag == "Entity" && hitCollider.gameObject != this.gameObject && getOtherFriendly( hitCollider.gameObject ) != getIsFriendly() ) {
         return hitCollider.gameObject;
@@ -38,14 +39,16 @@ public class Minion : MonoBehaviour {
     return isFriendly;
   }
   public bool getOtherFriendly( GameObject entity ) {
-    /*if ( entity.GetType() == typeof(Player) ) {
+    if ( entity.GetComponent<Player>() ) {
       Player player = entity.gameObject.GetComponent<Player>();
       return player.getIsFriendly();
     }
-    else*/ if ( entity.GetComponent(typeof(Minion)) != null ) {
+    else if ( entity.GetComponent<Minion>() != null ) {
       Minion minion = entity.gameObject.GetComponent<Minion>();
       return minion.getIsFriendly();
     }
-    return false;
+    else {
+      return entity.gameObject.GetComponent<Tower>().getIsFriendly();
+    }
   }
 }

@@ -126,3 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2
   isFriendly: 1
+  AttackRange: 5

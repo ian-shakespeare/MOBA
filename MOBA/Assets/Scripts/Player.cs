@@ -58,8 +58,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    bool getHasAttackedPlayer()
-    {
+    bool getHasAttackedPlayer() {
         return HasAttackedPlayer;
     }
     public bool getIsFriendly() {

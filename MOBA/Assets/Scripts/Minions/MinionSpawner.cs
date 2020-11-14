@@ -14,14 +14,13 @@ public class MinionSpawner : MonoBehaviour {
           case true:
             SpawnRotation = Quaternion.Euler(0, 45, 0);
             minion.setIsFriendly(true);
-            Instantiate( minion, new Vector3( -9, 0, -9), SpawnRotation );
             break;
           case false:
             SpawnRotation = Quaternion.Euler(0, -135, 0);
             minion.setIsFriendly(false);
-            Instantiate( minion, new Vector3( 9, 0, 9), SpawnRotation );
             break;
         }
+        Instantiate( minion, new Vector3( transform.position.x, 0, transform.position.z), SpawnRotation );
       }
 
       // Update is called once per frame
@@ -31,14 +30,13 @@ public class MinionSpawner : MonoBehaviour {
             case true:
               SpawnRotation = Quaternion.Euler(0, 45, 0);
               minion.setIsFriendly(true);
-              Instantiate( minion, new Vector3( -9, 0, -9), SpawnRotation );
               break;
             case false:
               SpawnRotation = Quaternion.Euler(0, -135, 0);
               minion.setIsFriendly(false);
-              Instantiate( minion, new Vector3( 9, 0, 9), SpawnRotation );
               break;
           }
+          Instantiate( minion, new Vector3( transform.position.x, 0, transform.position.z), SpawnRotation );
         }
         frames += 1;
       }
