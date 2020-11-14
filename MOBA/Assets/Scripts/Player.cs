@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public bool isAlive;
     public bool isFriendly;
     public Health playerHealth;
+    public Exp playerExp;
     public bool HasAttackedPlayer;
 
     // Update is called once per frame
