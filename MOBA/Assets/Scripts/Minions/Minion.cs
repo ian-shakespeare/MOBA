@@ -6,21 +6,41 @@ public class Minion : MonoBehaviour {
   public float MoveSpeed;
   public bool isFriendly;
   public float AttackRange;
+  public Health MinionHealth;
+  public int MinionDamage;
+  public double AttackSpeed;
 
   void Update() {
     // Checks to see if enemy is in range, then attacks or moves accordingly
+    if ( MinionHealth.GetHealth() <= 0 ) {
+      Destroy(this.gameObject);
+    }
     GameObject Enemy = enemyInRange();
     if ( Enemy != null ) {
-      attack( Enemy );
+      // Checks to see if they may attack, determined by AttackSpeed
+      if ( Time.time % AttackSpeed <= 0.005 ) {
+        attack( Enemy );
+      }
     }
     else {
       move();
     }
+    GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
   }
 
   // Attack and move code
   void attack( GameObject enemy ) {
-    // Attack code goes here
+    if ( enemy.GetComponent<Player>() != null ) {
+      Player player = enemy.gameObject.GetComponent<Player>();
+      player.playerHealth.ModifyHealth( MinionDamage );
+    }
+    else if ( enemy.GetComponent<Minion>() != null ) {
+      Minion minion = enemy.gameObject.GetComponent<Minion>();
+      minion.MinionHealth.ModifyHealth( MinionDamage );
+    }
+    else {
+      enemy.gameObject.GetComponent<Tower>().TowerHealth.ModifyHealth( MinionDamage );
+    }
   }
   void move() {
     transform.Translate ( Vector3.forward * MoveSpeed * Time.deltaTime );
@@ -49,7 +69,7 @@ public class Minion : MonoBehaviour {
 
   // Checks the isFriendly value of an entity
   public bool getOtherFriendly( GameObject entity ) {
-    if ( entity.GetComponent<Player>() ) {
+    if ( entity.GetComponent<Player>() != null ) {
       Player player = entity.gameObject.GetComponent<Player>();
       return player.getIsFriendly();
     }

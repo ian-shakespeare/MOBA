@@ -109,3 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   minion: {fileID: 6126843980249157893, guid: 23114af4706fb0441967aa3b0dffcbff, type: 3}
+  SpawnRate: 25

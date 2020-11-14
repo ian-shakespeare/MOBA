@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 1765164045365135828}
   - component: {fileID: 1765164045365135829}
   - component: {fileID: 1765164045365135833}
+  - component: {fileID: 7145412055965992225}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Entity
@@ -284,3 +285,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 0
   AttackRange: 12
+  TowerHealth: {fileID: 7145412055965992225}
+  TowerDamage: -15
+  AttackSpeed: 2
+--- !u!114 &7145412055965992225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765164045365135826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2d3a265dce6f941ab10adec115313e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200

@@ -5,18 +5,31 @@ using UnityEngine;
 public class Tower : MonoBehaviour {
     public bool isFriendly;
     public float AttackRange;
+    public Health TowerHealth;
+    public int TowerDamage;
+    public double AttackSpeed;
 
     // Checks to see if enemy is in range, attacks accordingly
     void Update() {
+      if ( TowerHealth.GetHealth() <= 0 ) {
+        Destroy( this.gameObject );
+      }
       GameObject Enemy = enemyInRange();
-      if ( Enemy != null ) {
+      if ( Enemy != null && Time.time % AttackSpeed <= 0.005 ) {
         attack( Enemy );
       }
     }
 
     // Attack code
     void attack( GameObject enemy ) {
-      // Attack code goes here
+      if ( enemy.GetComponent<Player>() != null ) {
+        Player player = enemy.gameObject.GetComponent<Player>();
+        player.playerHealth.ModifyHealth( TowerDamage );
+      }
+      else if ( enemy.GetComponent<Minion>() != null ) {
+        Minion minion = enemy.gameObject.GetComponent<Minion>();
+        minion.MinionHealth.ModifyHealth( TowerDamage );
+      }
     }
 
     // Checks for enemies in range, functions the same as in Minion.cs
