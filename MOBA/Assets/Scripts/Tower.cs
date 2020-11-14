@@ -6,12 +6,20 @@ public class Tower : MonoBehaviour {
     public bool isFriendly;
     public float AttackRange;
 
+    // Checks to see if enemy is in range, attacks accordingly
     void Update() {
       GameObject Enemy = enemyInRange();
       if ( Enemy != null ) {
         attack( Enemy );
       }
     }
+
+    // Attack code
+    void attack( GameObject enemy ) {
+      // Attack code goes here
+    }
+
+    // Checks for enemies in range, functions the same as in Minion.cs
     GameObject enemyInRange() {
       Collider[] hitColliders = Physics.OverlapSphere( transform.position, AttackRange );
       foreach ( var hitCollider in hitColliders ) {
@@ -21,9 +29,8 @@ public class Tower : MonoBehaviour {
       }
       return null;
     }
-    void attack( GameObject enemy ) {
-      Debug.Log("Attacking");
-    }
+
+    // Checks the friendly value of entity
     public bool getOtherFriendly( GameObject entity ) {
       if ( entity.GetComponent<Player>() != null ) {
         Player player = entity.gameObject.GetComponent<Player>();
@@ -35,6 +42,8 @@ public class Tower : MonoBehaviour {
       }
       return false;
     }
+
+    // returns friendly value
     public bool getIsFriendly() {
       return isFriendly;
     }

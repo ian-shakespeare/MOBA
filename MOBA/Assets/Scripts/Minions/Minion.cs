@@ -8,6 +8,7 @@ public class Minion : MonoBehaviour {
   public float AttackRange;
 
   void Update() {
+    // Checks to see if enemy is in range, then attacks or moves accordingly
     GameObject Enemy = enemyInRange();
     if ( Enemy != null ) {
       attack( Enemy );
@@ -16,13 +17,16 @@ public class Minion : MonoBehaviour {
       move();
     }
   }
+
+  // Attack and move code
   void attack( GameObject enemy ) {
-    //Debug.Log("Attacking");
+    // Attack code goes here
   }
   void move() {
-    //Debug.Log("Moving");
     transform.Translate ( Vector3.forward * MoveSpeed * Time.deltaTime );
   }
+
+  // Enemy in range code, works by taking a list of collisions in a sphere (radius defined by AttackRange) and checks to see if colliders are enemies
   GameObject enemyInRange() {
     Collider[] hitColliders = Physics.OverlapSphere( transform.position, AttackRange );
     foreach ( var hitCollider in hitColliders ) {
@@ -32,12 +36,18 @@ public class Minion : MonoBehaviour {
     }
     return null;
   }
+
+  // Changes the value of isFriendly (used by MinionSpawner.cs)
   public void setIsFriendly( bool friendly ) {
     isFriendly = friendly;
   }
+
+  // Returns isFriendly
   public bool getIsFriendly() {
     return isFriendly;
   }
+
+  // Checks the isFriendly value of an entity
   public bool getOtherFriendly( GameObject entity ) {
     if ( entity.GetComponent<Player>() ) {
       Player player = entity.gameObject.GetComponent<Player>();

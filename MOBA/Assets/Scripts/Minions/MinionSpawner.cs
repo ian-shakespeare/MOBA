@@ -8,7 +8,7 @@ public class MinionSpawner : MonoBehaviour {
       private Quaternion SpawnRotation;
       private int frames = 0;
 
-      // Start is called before the first frame update
+      // Start initializes the rotation of the minions and spawns a single one
       void Start() {
         switch( isFriendly ) {
           case true:
@@ -23,7 +23,7 @@ public class MinionSpawner : MonoBehaviour {
         Instantiate( minion, new Vector3( transform.position.x, 0, transform.position.z), SpawnRotation );
       }
 
-      // Update is called once per frame
+      // Update spawns an additional minion after 60 frames, or one second
       void Update() {
         if ( frames == 60 ) {
           switch( isFriendly ) {
